@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="output.css">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            // calculate scroll for progress indicator
+            window.addEventListener("scroll", function () {
+                const scrollableHeight =
+                document.documentElement.scrollHeight - window.innerHeight;
+                const scrolled = window.scrollY;
+                const progressBar = document.getElementById("scroll-progress");
+                const progress = (scrolled / scrollableHeight) * 100;
+                progressBar.style.width = progress + "%";
+            });
+
+            // Mobile menu burger toggle
+            const menuBurger = document.querySelector("#menuBurger");
+            const menuOpen = document.querySelector("#menuBurgerOpen");
+            const menuClose = document.querySelector("#menuBurgerClose");
+            const moonIcon = document.querySelector("#moonIcon");
+
+            menuBurger.addEventListener("click", function () {
+                if (document.querySelector("#mobileMenu").classList.contains("top-[-120px]")) {
+                    document.querySelector("#mobileMenu").classList.add("top-[45px]");
+                    document.querySelector("#mobileMenu").classList.remove("top-[-120px]");
+                    menuBurger.classList.add("animate-quickspin");
+                    menuBurger.classList.remove("animate-quickspinrev");
+                }
+                else if (document.querySelector("#mobileMenu").classList.contains("top-[45px]")){
+                    document.querySelector("#mobileMenu").classList.remove("top-[45px]");
+                    document.querySelector("#mobileMenu").classList.add("top-[-120px]");
+                    menuBurger.classList.add("animate-quickspinrev");
+                    menuBurger.classList.remove("animate-quickspin");
+                }
+                menuOpen.toggleAttribute("hidden");
+                menuClose.toggleAttribute("hidden");
+            });
+
+            // Toggle moon icon on/off and toggle ligh/dark mode
+            moonIcon.addEventListener("click", function () {
+                if (moonIcon.getAttribute("fill") === "none") {
+                    moonIcon.setAttribute("fill", "currentColor")
+                    document.querySelector("body").classList.remove("bg-gray-100");
+                    document.querySelector("body").classList.remove("text-gray-900");
+                    document.querySelector("body").classList.add("bg-cool_gray-500");
+                    document.querySelector("body").classList.add("text-slate-200");
+                }
+                else {
+                    moonIcon.setAttribute("fill", "none")
+                    document.querySelector("body").classList.remove("bg-cool_gray-500");
+                    document.querySelector("body").classList.remove("text-slate-200");
+                    document.querySelector("body").classList.add("bg-gray-100");
+                    document.querySelector("body").classList.add("text-gray-900");
+                }
+            });
+        });
+    </script>
+</head>
+    <header>
+        <div class="w-full fixed">
+            <nav class="text-cool_cyan-300 bg-cool_gray-300 pt-1 pb-2">
+                <a id="logo" class="text-3xl px-3 bg-cool_gray-300" href="#">
+                    Jared
+                </a>
+                <button id="menuBurger" type="button" class="sm:hidden float-end mt-2 px-3 focus:outline-none">
+                    <svg class="size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path id="menuBurgerOpen" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        <path id="menuBurgerClose" hidden stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <button class="float-end mt-3 px-3 focus:outline-none">
+                    <svg id="moonIcon" class="size-5"xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                    </svg>
+                </button>
+                <div id="scroll-progress" class="bg-cool_cyan-300 h-0.5 fixed top-0 left-0 z-50"></div>
+                <div id="mobileMenu" class="bg-cool_gray-300 fixed px-1 pt-1 pb-3 w-full sm:p-0 top-[-120px] duration-300 -z-10 sm:hidden">
+                    <a href="#about" class="block hover:bg-cool_gray-500 text-cool_cyan-300 rounded px-2 py-1 sm:ml-4 scroll-smooth">About</a>
+                    <a href="#project" class="block hover:bg-cool_gray-500 text-cool_cyan-300 rounded px-2 py-1 sm:ml-4 scroll-smooth">Work & Projects</a>
+                </div>
+                <div id="menu" class="bg-cool_gray-300 sm:flex float-end justify-end hidden pt-1">
+                    <a href="#about" class="hover:bg-cool_gray-500 text-cool_cyan-300 rounded px-2 py-1 sm:ml-4">About</a>
+                    <a href="#project" class="hover:bg-cool_gray-500 text-cool_cyan-300 rounded px-2 py-1 sm:ml-4">Work & Projects</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <body class="bg-cool_gray-500 text-slate-200">
+        <div class="flex justify-center max-w-sm mx-auto pt-20">
+            <img class="rounded-3xl shadow-md" src="Images\Cartoon_image2.webp">
+        </div>
+        <h1 id="about" class="text-3xl px-20 pt-20">
+            About Me
+        </h1>
+        <p class="py-4 px-20 text-left">
+            Hello and welcome! I'm Jared, an entrepreneur and creative spirit, on a continuous journey to shape a fulfilling, purpose-driven life.
+        </p>
+        <h1 class="text-3xl px-20 pt-5">
+            My Story So Far
+        </h1>
+        <p class="py-4 px-20 text-left">
+            Since starting my career as a market research analyst back in 2010, I've ventured into a world of entrepreneurship, launching and managing small businesses along the way. These experiences have been invaluable, and while I've since moved toward more stable work, my entrepreneurial spirit is still alive and well. I love the freedom and creativity that come with taking risks, and every project I undertake is fueled by a desire for exploration and innovation.
+
+            Today, I support myself through consulting and commission-based projects with clients. The flexibility of setting my own schedule is a great fit, yet I'm still seeking that deeper sense of purpose in my work. I'm at a crossroads, open to discovering where my next big adventure might lead.
+        </p>
+        <h1 class="text-3xl px-20 pt-5">
+            What Drives Me
+        </h1>
+        <p class="py-4 px-20 text-left">
+            My values are at the heart of everything I do. I'm driven by a sense of adventure, creativity, and achievement—whether that means exploring new ideas, building something from scratch, or reaching a goal I set for myself. Staying active and connected with loved ones are also essential to my well-being, and I make a point to keep a balance between my personal health and my professional aspirations. Above all, I value freedom: the freedom to choose my own path, to pivot when necessary, and to embrace each opportunity as it comes.
+        </p>
+        <p class="py-4 px-20 text-left">
+        <h1 id="project" class="text-3xl px-20 pt-5">
+            My Current Project - Learning
+        </h1>
+        <p class="py-4 px-20 text-left">
+            Right now, learning how to code and create my own ideas.
+        </p>
+        <p class="py-4 px-20 text-left">
+        <h1 class="text-3xl px-20 pt-5">
+            What You'll Find Here
+        </h1>
+        <p class="py-4 px-20 text-left pb-20">
+            On this blog, I share insights from my professional and personal journey, offering ideas and resources for those who might find themselves at a similar crossroads. Whether you're navigating the ups and downs of a self-directed career, exploring your next steps, or simply seeking inspiration, I hope my stories resonate with you.
+
+            Thanks for stopping by! I'd love to connect with like-minded adventurers, creatives, and innovators, so don't hesitate to reach out.
+        </p>
+    </body>
+</html>

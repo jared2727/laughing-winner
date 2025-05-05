@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="output.css">
+    <title>What I do</title>
+    <section>
+    <header class="header-main colors navbar-brand">
+        <nav class="menu navbar">              
+            <a href="index.html" class="">home</a>
+            <a href="whatido.html">what I do (work)</a>
+            <a href="hobbies.html">other things that I do (hobbies)</a>
+            <a href="about.html">about me (jared)</a>
+        </nav>
+        <!-- <div class="scroll-line"></div> -->
+        <div
+            id="scroll-progress" class="bg-cool-cyan h-0.5 fixed top-20 left-0 z-50">
+        </div>
+    </header>
+</section>
+</head>
+<body>
+    <script>
+        
+        window.addEventListener("scroll", function () {
+        const scrollableHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        const progressBar = document.getElementById("scroll-progress");
+        const progress = (scrolled / scrollableHeight) * 100;
+        progressBar.style.width = progress + "%";
+      });
+    
+    </script>
+</body>
+</html>
